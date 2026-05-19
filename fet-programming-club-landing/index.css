@@ -1,0 +1,173 @@
+@import url('https://cdnfonts.com');
+@import url('https://cdnfonts.com');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1a1c28;
+}
+
+.banner {
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Updated Button Dashboard Flex Wrapper */
+.banner .upload-container {
+    position: relative;
+    top: 40px;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Adds space between the two buttons */
+    flex-wrap: wrap;
+}
+
+.banner .upload-btn {
+    color: #ffffff;
+    padding: 14px 24px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Different colors to help users differentiate actions */
+.banner .carousel-btn {
+    background-color: #ff4757;
+    box-shadow: 0 5px 20px rgba(255, 71, 87, 0.4);
+}
+
+.banner .carousel-btn:hover {
+    background-color: #ff6b81;
+    transform: translateY(-2px);
+}
+
+.banner .model-btn {
+    background-color: #10ac84;
+    box-shadow: 0 5px 20px rgba(16, 172, 132, 0.4);
+}
+
+.banner .model-btn:hover {
+    background-color: #1dd1a1;
+    transform: translateY(-2px);
+}
+
+/* Hide standard ugly input tags */
+.banner #image-picker, .banner #model-picker {
+    display: none !important;
+}
+
+.banner .slider {
+    position: absolute;
+    width: 200px;
+    height: 250px;
+    top: 25%;
+    left: calc(50% - 100px);
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    animation: autoRun 20s linear infinite;
+    z-index: 2;
+}
+
+@keyframes autoRun {
+    from { transform: perspective(1000px) rotateX(-16deg) rotateY(0deg); }
+    to { transform: perspective(1000px) rotateX(-16deg) rotateY(360deg); }
+}
+
+.banner .slider .item {
+    position: absolute;
+    inset: 0 0 0 0;
+    transform: rotateY(calc((var(--position) - 1) * (360deg / var(--quantity)))) translateZ(350px);
+}
+
+.banner .slider .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+/* Central Character Settings with a fallback asset default path */
+.banner .slider .model {
+    background-image: url('Image folder/Screenshot 2026-05-19 111505.png');
+    width: 250px;       
+    height: 350px;      
+    position: absolute;
+    bottom: -50px;      
+    left: calc(50% - 125px); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    animation: counterRun 20s linear infinite; 
+}
+
+@keyframes counterRun {
+    from { transform: rotateY(0deg); }
+    to { transform: rotateY(-360deg); }
+}
+
+.banner .upload-prompt {
+    position: absolute;
+    width: 320px;
+    top: 40%;
+    left: calc(50% - 160px);
+    font-family: 'Poppins', sans-serif;
+    color: #a4b0be;
+    font-size: 1.1rem;
+}
+
+.banner .content {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(1400px, 90vw); 
+    height: max-content;
+    padding-bottom: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 3;
+    pointer-events: none; 
+}
+
+.banner .content h1 {
+    font-family: 'ICA Rubrik', sans-serif;
+    font-size: clamp(4rem, 12vw, 16rem); 
+    line-height: 1em;
+    color: #25283b;
+    position: relative;
+}
+
+.banner .content h1::after {
+    position: absolute;
+    inset: 0 0 0 0;
+    content: attr(data-content);
+    z-index: 2;
+    -webkit-text-stroke: 2px #d2d2d2; 
+    color: transparent;
+}
+
+.banner .content .author {
+    font-family: 'Poppins', sans-serif;
+    text-align: right;
+    max-width: 300px;
+    color: #fff;
+}
+
+.banner .content h2 {
+    font-size: 2.5em;
+}
